@@ -28,6 +28,6 @@ const markdownPath = () => {
     }
  
 
-module.exports = linksrs;
+module.exports = markdownPath;
 
           
