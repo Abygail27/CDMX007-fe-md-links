@@ -1,5 +1,5 @@
 // the directory
-const  findDirrPath = require('./main.js');
+const  findDirrPath = require('./index.js');
 findDirrPath();
 
 const finddir = () => {

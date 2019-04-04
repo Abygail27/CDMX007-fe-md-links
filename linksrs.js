@@ -1,6 +1,6 @@
 // se exporta el validate para que muestre las stats
 
-const main = require('./main');
+const main = require('./indexx');
 const path = require('path');
 const fs = require('fs'); //in a const, so we wont over write main
 
@@ -13,7 +13,7 @@ const mdlinks = (data) => {
   console.log(result)
 
 };
- 
+
 
 
 
