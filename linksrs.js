@@ -5,9 +5,10 @@ const path = require('path');
 const fs = require('fs'); //in a const, so we wont over write main
 
 console.log('holi estoy en linksrs.js');
-const markdownSearchLinks = (data) => {
+const mdlinks = (data) => {
 
-  const regex = /(https?:\/\/[^\s]+)/g;
+  const regex = /(\b(https?|ftp|file):\/\/[-A-Z0-9+&@#\/%?=~_|!:,.;]*[-A-Z0-9+&@#\/%=~_|])/ig;
+  
   const result = data.match(regex)
   console.log(result)
 
@@ -17,4 +18,4 @@ const markdownSearchLinks = (data) => {
 
 
 
-module.exports.markdownSearchLinks = markdownSearchLinks;
+module.exports.mdlinks = mdlinks;

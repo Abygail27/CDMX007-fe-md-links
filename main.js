@@ -18,7 +18,7 @@ const markdownPath = () => {
               if (err)
                 console.log('ERROR', err);
               else
-                searchURL.markdownSearchLinks(data)
+                searchURL.mdlinks(data)
             }
           })
         }
