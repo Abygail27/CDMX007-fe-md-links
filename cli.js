@@ -1,4 +1,4 @@
-#!/usr/bin/env node
+#!/usr/bin/env node //importación mdLinks(path, options)
 
 const [,, ...args] = process.argv
-console.log(`hello world ${args}`);
+console.log(`from CLI ${args}`);
