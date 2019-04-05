@@ -1,18 +1,19 @@
-// se exporta el validate para que muestre las stats
+//--TO DO--
+// se exporta el validate para que muestre las stats //href: URL encontrada.
+//text: Texto que aparecía dentro del link (<a>). //file: Ruta del archivo donde se encontró el link.
 
-const main = require('./main');
+const markdownPath = require('./core');
 const path = require('path');
 const fs = require('fs'); //in a const, so we wont over write main
 
-console.log('holi estoy en linksrs.js');
 const markdownSearchLinks = (data) => {
 
-  const regex = /(https?:\/\/[^\s]+)/g;
-  const result = data.match(regex)
-  console.log(result)
+  const regex = /(\b(https?|ftp|file):\/\/[-A-Z0-9+&@#\/%?=~_|!:,.;]*[-A-Z0-9+&@#\/%=~_|])/ig;
+
+  const result = data.match(regex);
+  console.log(result);
 
 };
- 
 
 
 

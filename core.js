@@ -1,18 +1,31 @@
-// the directory
-const  findDirrPath = require('./main.js');
-findDirrPath();
+const fs = require('fs');
+const path = require('path');
+const finddir = require('./index');
+const searchURL = require('./linksrs');
+const markdownPath = () => {
 
-const finddir = () => {
-  const fs = require('fs');
-  const readdirc = fs.readdir('./', (err, files) => {
+
+  fs.readdir('./', (err, data) => {
     if (err) {
-      console.log(err);
+      console.log('error', err);
     } else {
-      console.log(files);
+
+
+      data.forEach(element => {
+        if (path.extname(element) === ".md") {
+          fs.readFile(element, 'utf-8', (err, data) => {
+            {
+              if (err)
+                console.log('ERROR', err);
+              else
+                searchURL.markdownSearchLinks(data)
+            }
+          })
+        }
+      })
     }
-  });
-  return readdirc;
-
+  })
 }
+markdownPath()
+module.exports = markdownPath;
 
-module.exports = finddir();
