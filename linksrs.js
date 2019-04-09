@@ -1,7 +1,7 @@
 
 const markdownPath = require('./core');
 const getUrls = require("get-urls");
- 
+
 const markdownSearchLinks = (data) => {
 
   let res = getUrls(data);
@@ -10,3 +10,5 @@ const markdownSearchLinks = (data) => {
 };
 module.exports.markdownSearchLinks = markdownSearchLinks;
 
+
+ 
