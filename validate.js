@@ -1,38 +1,45 @@
-// const markdownSearchLinks = require('./linksrs'); 
+const markdownSearchLinks = require('./linksrs'); 
+const colors = require('colors');
+const getUrls = require('get-urls');
+
+const validateLinks = (markdownSearchLinks) => {
+
+const array = getUrls(data);
+let res = getUrls(data);
+array.forEach(res => {
+  console.log(res);
+  console.log(this === array , this);
+}, array);
 
 
-// const validateLinks = (markdownSearchLinks) => {
 
-// if(validate == '--validate'){
+if (validate == '--validate') {
+  markdownSearchLinks.map(res => 
+    fetch(res)
+    .then(response => {
+      if (response.status == 200) {
+        console.log(`$res}` + " " + response.status + " " + response.statusText);
+      } else if (response.status == 404) {
+        console.log(`${res}` + " " + response.status + " " + response.statusText);
+      }
+    })
+    .catch(err => console.log(err)));
+try {
 
-//   markdownSearchLinks.map(element => 
-//     fetch(element).then(response =>{
-//       if (res.status >= 200 && res.status < 400) {
-//         element.status = res.status;
-//         element.statusText = res.statusText;
-//         resolve(element);
+} catch (error) {
 
-//         console.log(`status: ${colors.blue(response.status)}
-//                      text:${colors.green(response.statusText)} 
-//                      link:${element.red}`)
 
-//       } else {
-//         element.status = res.status;
-//         element.statusText = 'Fail';
-//         resolve(element);
-//       }
-//     })
-//   .catch(() => {
-//   element.status = '';
-//   element.statusText = 'Este link no existe';
-//   resolve(element);
-//   console.log(element);
+item.status = '';
+item.statusText = 'Este link no existe';
+resolve(item);
+console.log(item);
+}
 
-// return Promise.all(arrPr).then(res => {
-// return res;
-// })
-//   }))
-// }
-// }
+}
+  return (array).then(res => {
+  return res;
+ })
 
-// module.exports.validateLinks= validateLinks;
+} 
+
+module.exports.validateLinks= validateLinks;
