@@ -1,12 +1,10 @@
-
+#!/usr/bin/env node
 const markdownPath = require('./core');
 const getUrls = require("get-urls");
-
+let urls = new Set();
 const markdownSearchLinks = (data) => {
-
-  let res = getUrls(data);
-  console.log(res);
-
+  urls = getUrls(data);
+  return urls;
 };
 module.exports.markdownSearchLinks = markdownSearchLinks;
 

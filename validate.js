@@ -1,41 +1,45 @@
+#!/usr/bin/env node
 const markdownSearchLinks = require('./linksrs'); 
 const colors = require('colors');
-const getUrls = require('get-urls');
-const validate = process.argv[2];
+var request = require('request');
 
-// const validateLinks = (markdownSearchLinks) => {
 
-// const array = getUrls(data);
-// let res = getUrls(data);
-// array.forEach(res => {
-//   console.log(res);
-//   console.log(this === array , this);
-// }, array); --------- esto se encuentra en el modulo de linksrs.js
-const fromLinks = module.exports =`${markdownSearchLinks} `;
-
-const validatingURLS = (fromLinks) => {
-  if (validate == '--validate') {
-  fromLinks.forEach(element => {
-    console.log(element);
-
-    fetch(element)
-    .then (response => {
-      if(response.status === 200){
-
-        console.log(`
-        textRes: ${colors.blue(response.status)} 
-        status:${colors.green(response.statusText)} 
-        link:${colors.yellow (element.green)}  `)
-
-      }else if (response.status === 400){
-        console.log(`
-        textRes: ${colors.blue(response.status)} 
-        status:${colors.red(response.statusText)} 
-        link:${colors.orange(element.green)} `)
-      }
-    })
-  });
-  }
+const validateLinks = (urls) => {
+  urls.forEach(url => {  
+    console.log(url);
+    testUrl(url);
+  }, urls);
 }
 
-module.exports.validatingURLS= validatingURLS;
+const testUrl =(url)=>{
+  request(url , function (error, response,) {
+
+    if(error){
+      console.log('Err: '+ error);
+      return false;
+    }
+
+  if(response.statusCode == 200 || response.statusCode == 201 || response.statusCode == 202){
+    console.log(`Ruta de la URL
+    status:${colors.red(response.statusCode)} 
+    link:${colors.yellow (url.substring(0,50))}  `);
+    return false;
+  }
+
+  if(response.statusCode == 301 || response.statusCode == 302){
+    console.log(url + 'responde al status');
+    return false;
+  }
+
+  if(response.statusCode == 401){
+    console.log("se presento un error" + url);
+    return false;
+  }else{
+    console.log(`url tiene un error
+    status:${colors.red(response.statusCode)} 
+    link:${colors.yellow(url.substring(0,50))} `)
+  }
+
+  });
+}
+module.exports.validateLinks= validateLinks
