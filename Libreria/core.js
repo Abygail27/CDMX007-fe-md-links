@@ -2,9 +2,9 @@
 
 const fs = require('fs');
 const path = require('path');
-const finddir = require('./index');
+const finddir = require('../index');
 const searchURL = require('./linksrs');
-const validator = require('./validate');
+const validator = require('../validate');
 
 const markdownPath = () => {
   let validate = false;

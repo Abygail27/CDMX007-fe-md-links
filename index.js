@@ -1,5 +1,5 @@
 const fs = require('fs');
-const core = require('./core'); 
+const core = require('./Libreria/core'); 
 
 const finddir = () => {
   const fs = require('fs');
