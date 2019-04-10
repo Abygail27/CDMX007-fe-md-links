@@ -1,38 +1,45 @@
-// const markdownSearchLinks = require('./linksrs'); 
+#!/usr/bin/env node
+const markdownSearchLinks = require('./linksrs'); 
+const colors = require('colors');
+var request = require('request');
 
 
-// const validateLinks = (markdownSearchLinks) => {
+const validateLinks = (urls) => {
+  urls.forEach(url => {  
+    console.log(url);
+    testUrl(url);
+  }, urls);
+}
 
-// if(validate == '--validate'){
+const testUrl =(url)=>{
+  request(url , function (error, response,) {
 
-//   markdownSearchLinks.map(element => 
-//     fetch(element).then(response =>{
-//       if (res.status >= 200 && res.status < 400) {
-//         element.status = res.status;
-//         element.statusText = res.statusText;
-//         resolve(element);
+    if(error){
+      console.log('Err: '+ error);
+      return false;
+    }
 
-//         console.log(`status: ${colors.blue(response.status)}
-//                      text:${colors.green(response.statusText)} 
-//                      link:${element.red}`)
+  if(response.statusCode == 200 || response.statusCode == 201 || response.statusCode == 202){
+    console.log(`Ruta de la URL
+    status:${colors.red(response.statusCode)} 
+    link:${colors.yellow (url.substring(0,50))}  `);
+    return false;
+  }
 
-//       } else {
-//         element.status = res.status;
-//         element.statusText = 'Fail';
-//         resolve(element);
-//       }
-//     })
-//   .catch(() => {
-//   element.status = '';
-//   element.statusText = 'Este link no existe';
-//   resolve(element);
-//   console.log(element);
+  if(response.statusCode == 301 || response.statusCode == 302){
+    console.log(url + 'responde al status');
+    return false;
+  }
 
-// return Promise.all(arrPr).then(res => {
-// return res;
-// })
-//   }))
-// }
-// }
+  if(response.statusCode == 401){
+    console.log("se presento un error" + url);
+    return false;
+  }else{
+    console.log(`url tiene un error
+    status:${colors.red(response.statusCode)} 
+    link:${colors.yellow(url.substring(0,50))} `)
+  }
 
-// module.exports.validateLinks= validateLinks;
+  });
+}
+module.exports.validateLinks= validateLinks

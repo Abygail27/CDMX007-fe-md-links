@@ -1,4 +1,8 @@
-#!/usr/bin/env node //importación mdLinks(path, options)
+#!/usr/bin/env node
 
-const [,, ...args] = process.argv
-console.log(`from CLI ${args}`);
+const index = require('./index');
+const links = require('./linksrs');
+const infoRequired = process.argv.splice(2);
+const validate = infoRequired.includes('--validate');
+const stats = infoRequired.includes('--stats');
+
