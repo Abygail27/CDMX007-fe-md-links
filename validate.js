@@ -8,18 +8,10 @@ var validation = {
 };
 
 const validateLinks = (urls) => {
-  return new Promise(function(resolve, reject){
-    urls.forEach(url => {  
-      console.log(url);
-      testUrl(url);}, urls);
-      if(validation.broken){
-        resolve(validation); 
-      }else{
-        reject(Error('no data recovered'));   
-      }
-      
-  });
-  
+  urls.forEach(url => {  
+    console.log(url);
+    testUrl(url);}, urls);
+    return validation; 
 }
 
 const testUrl =(url)=>{

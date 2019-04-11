@@ -38,21 +38,13 @@ const markdownPath = () => {
                 }                
                 else{
                   let urls = searchURL.markdownSearchLinks(data);
-                  
+                  let validation = {};
                   if (validate) {
-                   validator.validateLinks(urls).then(function(resp){
-                    if (stats) {
-                      stadistics.printStats(urls, resp);
-                    }else{
-                      console.warn('total de links rotos: ' + resp.broken);
-                    }
-                   }); 
-                  }else{
-                    if (stats) {
-                      stadistics.printStats(urls, {});
-                    }
+                    validation = validator.validateLinks(urls); 
                   }
-                  
+                  if (stats) {
+                    stadistics.printStats(urls, validation);
+                  }
                 }
               }
             })
