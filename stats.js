@@ -1,16 +1,20 @@
 #!/usr/bin/env node
-const validate = require('./validate');
+const links = require('./links');
 
-const statsOfLink = (validateLinks, testUrl, finddir, markdownPath) => {
-    const markdownPath = require('./core');
+const printStats = (linksArray, uniqueArray, File, Path) => {
     console.log(
-      `Links totales: ${validateLinks.length} Links exclusivos: ${testUrl.length} 
-      archivo donde se encuentra: ${finddir} carpeta donde se encuentra: ${markdownPath}`.stats);
+      `
+      Archivo ${File} de la carpeta ${Path}
+          Total de links: ${linksArray.length} 📊
+          Links únicos: ${uniqueArray.length} ✅ 
+      `.stats);
   };
- 
- const testUrl =  async (validateLinks, finddir) => {
-      let showStats = await validate.urls(validateLinks);
-      statsOfLink(linksArray,showStats, finddir)
-    };
   
-    module.exports.testUrl = testUrl;
+  async function counting (linksArray, File, Dir) {
+      let result = await links.uniqueLinks(linksArray);
+      printStats(linksArray, result, File, Dir)
+    };
+
+    module.exports.counting = counting; 
+
+

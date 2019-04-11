@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-const markdownSearchLinks = require('./linksrs'); 
+const markdownSearchLinks = require('./Libreria/linksrs'); 
 const colors = require('colors');
 var request = require('request');
 

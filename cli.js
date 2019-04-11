@@ -1,8 +1,14 @@
-#!/usr/bin/env node
+// #!/usr/bin/env node
+console.log('hola');
+// const index = require('./modules/index');
+// const validateFile = require('./modules/validate');
+// const validate = infoRequired.includes('--validate');
 
-const index = require('./index');
-const links = require('./linksrs');
-const infoRequired = process.argv.splice(2);
-const validate = infoRequired.includes('--validate');
-const stats = infoRequired.includes('--stats');
 
+//   const typeOfValidation = (linksArray, File, Path) => {
+//     if(validate) {
+//         validateFile.validatingLinks(linksArray, File, Path);   
+//     }
+//   }
+
+//   module.exports.typeOfValidation = typeOfValidation;
