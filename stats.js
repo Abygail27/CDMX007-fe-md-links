@@ -1,6 +1,7 @@
 #!/usr/bin/env node
 const linksStats = require('./Libreria/linksrs');
 const request = require('request');
+const colors = require('colors');
 
 const printStats = (urls, validation) => {
     console.log(`Total de links: ${urls.size} `);
