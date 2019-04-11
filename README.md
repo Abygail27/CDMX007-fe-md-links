@@ -20,10 +20,10 @@ options:
 
 ### `README.md`
 
-- [ ] Colocar el pseudo código o diagrama de flujo con el algoritmo que soluciona el problema.
-- [ ] Un board con el backlog para la implementación de la librería.
-- [ ] Documentación técnica de la librería.
-- [ ] Guía de uso e instalación de la librería
+- [  ✓] Colocar el pseudo código o diagrama de flujo con el algoritmo que soluciona el problema.
+- [  ✓] Un board con el backlog para la implementación de la librería.
+- [ ✓ ] Documentación técnica de la librería.
+- [ ✓ ] Guía de uso e instalación de la librería
 
 ### API `mdLinks(path, opts)`
 
@@ -40,9 +40,9 @@ options:
 
 ### CLI
 
-- [ ] Expone ejecutable `md-links` en el path (configurado en `package.json`)
+- [ ✓ ] Expone ejecutable `md-links` en el path (configurado en `package.json`)
 - [ ] Se ejecuta sin errores / output esperado
-- [ ] Implementa `--validate`
+- [  ✓] Implementa `--validate`
 - [ ] Implementa `--stats`
 
 ## Hacker Edition
