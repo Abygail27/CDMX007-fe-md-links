@@ -1,20 +1,14 @@
 #!/usr/bin/env node
-const links = require('./links');
+const linksStats = require('./Libreria/linksrs');
+const request = require('request');
 
-const printStats = (linksArray, uniqueArray, File, Path) => {
-    console.log(
-      `
-      Archivo ${File} de la carpeta ${Path}
-          Total de links: ${linksArray.length} 📊
-          Links únicos: ${uniqueArray.length} ✅ 
-      `.stats);
-  };
+const printStats = (urls, validation) => {
+    console.log(`Total de links: ${urls.size} `);
+    if(validation.broken){
+      console.log(`Total de links rotos: ${validation.broken} `);
+    }
+};
   
-  async function counting (linksArray, File, Dir) {
-      let result = await links.uniqueLinks(linksArray);
-      printStats(linksArray, result, File, Dir)
-    };
-
-    module.exports.counting = counting; 
+module.exports.printStats = printStats; 
 
 
