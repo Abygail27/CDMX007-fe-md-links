@@ -3,9 +3,10 @@
 const markdownSearchLinks = require('./Libreria/linksrs'); 
 const colors = require('colors');
 const request = require('request');
+
 var validation = {
   broken: 0 
-};
+}; // objeto vacio, var, por que va a variar su respuesta de acuerdo a la validación. 
 
 const validateLinks = (urls) => {
   urls.forEach(url => {  
@@ -22,17 +23,13 @@ const testUrl =(url)=>{
       return false;
     }
 
-  if(response.statusCode == 200 || response.statusCode == 201 || response.statusCode == 202){
+  if(response.statusCode == 200){
     console.log(`Ruta de la URL
     status:${colors.green(response.statusCode)} 
     link:${colors.yellow (url.substring(0,50))}  `);
     return false;
   }
 
-  if(response.statusCode == 301 || response.statusCode == 302){
-    console.log(url + 'responde al status');
-    return false;
-  }
 
   if(response.statusCode == 401){
     console.log("se presento un error" + url);

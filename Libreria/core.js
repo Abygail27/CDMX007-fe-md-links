@@ -13,8 +13,8 @@ const markdownPath = () => {
   let validate = false;
   let stats = false;
   if(process.argv.length > 0){
-    for (let i = 0; i < process.argv.length; i++) {  
-      console.log(i + ' -> ' + (process.argv[i]));
+    for (let i = 0; i < process.argv.length; i++) {  //argumento desde la ejecución de la posición 0.
+      console.log(i + (process.argv[i]));            //argumentos de la posición donde se encuentra.    
       if(process.argv[i] === '--validate'){
         validate = true;
       }
@@ -43,16 +43,16 @@ const markdownPath = () => {
                     validation = validator.validateLinks(urls); 
                   }
                   if (stats) {
-                    stadistics.printStats(urls, validation);
+                    stadistics. statstt(urls, validation);
                   }
                 }
               }
             })
           }
-          });//end foreach
+          });//TERMINA FOREACH
         }
       })
-    }
+    }//TERMINA MARKDOWNPATH
   
       
   markdownPath()
