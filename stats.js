@@ -1,3 +1,4 @@
+#!/usr/bin/env node
 const links = require('./links');
 
 const printStats = (linksArray, uniqueArray, File, Path) => {
