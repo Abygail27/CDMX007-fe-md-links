@@ -1,14 +1,17 @@
 #!/usr/bin/env node
+
 const markdownSearchLinks = require('./Libreria/linksrs'); 
 const colors = require('colors');
-var request = require('request');
-
+const request = require('request');
+var validation = {
+  broken: 0 
+};
 
 const validateLinks = (urls) => {
   urls.forEach(url => {  
     console.log(url);
-    testUrl(url);
-  }, urls);
+    testUrl(url);}, urls);
+    return validation; 
 }
 
 const testUrl =(url)=>{
@@ -21,7 +24,7 @@ const testUrl =(url)=>{
 
   if(response.statusCode == 200 || response.statusCode == 201 || response.statusCode == 202){
     console.log(`Ruta de la URL
-    status:${colors.red(response.statusCode)} 
+    status:${colors.green(response.statusCode)} 
     link:${colors.yellow (url.substring(0,50))}  `);
     return false;
   }
@@ -38,6 +41,7 @@ const testUrl =(url)=>{
     console.log(`url tiene un error
     status:${colors.red(response.statusCode)} 
     link:${colors.yellow(url.substring(0,50))} `)
+    validation.broken ++ ;
   }
 
   });
